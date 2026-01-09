@@ -57,10 +57,10 @@ function draw() {
     fill(0);
     text(`Trial ${trial}/${numTrials}`, 10, height - 20);
   } else if (!running && trial === 0) {
-    text("Press SPACE to begin.", 10, height - 20);
+    text("Appuyer sur ESPACE pour commencer", 10, height - 20);
   } else if (!running && trial > numTrials) {
     fill(0, 150, 0);
-    text("Experiment complete. CSV downloaded.", 10, height - 20);
+    text("L'expérience est finie, merci de votre coopération!", 10, height - 20);
   }
 
   // draw cursor
@@ -137,3 +137,4 @@ function downloadCSV(data) {
   link.download = `results_${Date.now()}.csv`;
   link.click();
 }
+
