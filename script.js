@@ -40,7 +40,7 @@ function setup() {
 function draw() {
   background(255);
   fill(0);
-  text("SPACE: start   LEFT-CLICK: submit   X/Y: flip axis", 10, 20);
+  text("ESPACE: commencer   CLICK-GAUCHE: submit", 10, 20);
   text(`FlipX: ${flipX}  FlipY: ${flipY}`, 10, 40);
 
   if (running && trial > 0 && trial <= numTrials) {
@@ -48,11 +48,14 @@ function draw() {
     fill(currentColor);
     ellipse(t[0], t[1], targetRadius * 2);
 
-    // show timer only after trial 6
     if (trial >= 6) {
-      fill(120, 0, 0);
-      text(`Timer: ${(millis() - globalStart) / 1000.0}s`, width - 200, 20);
-    }
+  let seconds = (millis() - globalStart) / 1000;
+
+  fill(120, 0, 0);
+  textSize(32); 
+  text(`Timer: ${nf(seconds, 0, 1)} s`, width - 240, 40);
+  textSize(16); 
+}
 
     fill(0);
     text(`Trial ${trial}/${numTrials}`, 10, height - 20);
@@ -137,4 +140,5 @@ function downloadCSV(data) {
   link.download = `results_${Date.now()}.csv`;
   link.click();
 }
+
 
